@@ -4,816 +4,530 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muneera Mohamed | Data Science & Financial Analytics Specialist</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
                     colors: {
                         brand: {
-                            50: '#f0fdfa',
-                            100: '#ccfbf1',
-                            500: '#14b8a6',
-                            600: '#0d9488',
-                            700: '#0f766e',
-                            800: '#115e59',
-                            900: '#134e4a',
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            900: '#0c4a6e',
                         },
-                        navy: {
-                            800: '#0b132b',
-                            900: '#070a13',
+                        accent: {
+                            400: '#818cf8',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                        },
+                        dark: {
+                            bg: '#090d16',
+                            card: '#111827',
+                            border: '#1f293d',
                         }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
-    <!-- Google Fonts & Font Awesome Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
         body {
-            font-family: 'Inter', sans-serif;
+            background-color: #090d16;
+            color: #f3f4f6;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        .dark .glass-card {
-            background: rgba(15, 23, 42, 0.75);
-            backdrop-filter: blur(12px);
+        .glass-panel {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
+        .glass-panel-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-panel-hover:hover {
+            transform: translateY(-4px);
+            border-color: rgba(56, 189, 248, 0.3);
+            box-shadow: 0 20px 30px -10px rgba(14, 165, 233, 0.15);
+        }
         .gradient-text {
-            background: linear-gradient(135deg, #0d9488 0%, #2563eb 100%);
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .dark .gradient-text {
-            background: linear-gradient(135deg, #2dd4bf 0%, #60a5fa 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .gradient-border {
+            position: relative;
+            border-radius: 1rem;
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(99, 102, 241, 0.2));
+            padding: 1px;
+        }
+        .gradient-border-inner {
+            background: #0d1322;
+            border-radius: calc(1rem - 1px);
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300">
+<body class="antialiased selection:bg-brand-500 selection:text-white">
 
-    <!-- Navigation Bar -->
-    <nav class="fixed top-0 left-0 w-full z-50 transition-all duration-300 backdrop-blur-md bg-white/80 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <!-- Brand Logo -->
-                <a href="#home" class="flex items-center gap-3 group">
-                    <div class="w-10 h-10 rounded-xl bg-teal-600 text-white font-bold flex items-center justify-center shadow-md shadow-teal-500/20 group-hover:scale-105 transition-transform">
-                        MM
-                    </div>
-                    <div>
-                        <span class="font-bold text-lg tracking-tight text-slate-900 dark:text-white block leading-tight">Muneera Mohamed</span>
-                        <span class="text-xs text-teal-600 dark:text-teal-400 font-medium">MSc Data Science | CMA USA</span>
-                    </div>
-                </a>
-
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
-                    <a href="#about" class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">About</a>
-                    <a href="#skills" class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Skills</a>
-                    <a href="#projects" class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">ML Projects</a>
-                    <a href="#finance" class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Finance Analytics</a>
-                    <a href="#credentials" class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Credentials</a>
-                    <a href="#contact" class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Contact</a>
+    <!-- Header Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-gray-800/50">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-500 to-accent-500 flex items-center justify-center font-bold text-white shadow-lg shadow-brand-500/20 group-hover:scale-105 transition-transform">
+                    MM
                 </div>
-
-                <!-- Action Controls -->
-                <div class="flex items-center gap-3">
-                    <!-- UAE Golden Visa Badge -->
-                    <span class="hidden xl:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-100 text-amber-800 dark:bg-amber-950/80 dark:text-amber-300 border border-amber-300 dark:border-amber-800">
-                        <i class="fa-solid fa-crown text-amber-500"></i> UAE Golden Visa Holder
-                    </span>
-
-                    <!-- Theme Toggle -->
-                    <button id="themeToggle" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors focus:outline-none">
-                        <i class="fa-solid fa-moon dark:hidden"></i>
-                        <i class="fa-solid fa-sun hidden dark:inline"></i>
-                    </button>
-
-                    <!-- Mobile Menu Button -->
-                    <button id="mobileMenuBtn" class="md:hidden p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-teal-600 focus:outline-none">
-                        <i class="fa-solid fa-bars text-lg"></i>
-                    </button>
+                <div>
+                    <span class="font-bold text-lg tracking-tight block">Muneera Mohamed</span>
+                    <span class="text-xs text-gray-400 font-mono">Data Science & Financial Intelligence</span>
                 </div>
-            </div>
-        </div>
+            </a>
+            
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-300">
+                <a href="#about" class="hover:text-brand-400 transition-colors">About</a>
+                <a href="#skills" class="hover:text-brand-400 transition-colors">Core Skills</a>
+                <a href="#projects" class="hover:text-brand-400 transition-colors">Projects</a>
+                <a href="#experience" class="hover:text-brand-400 transition-colors">Experience</a>
+                <a href="#credentials" class="hover:text-brand-400 transition-colors">Credentials</a>
+            </nav>
 
-        <!-- Mobile Navigation Drawer -->
-        <div id="mobileMenu" class="hidden md:hidden border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg px-4 pt-3 pb-6 space-y-3">
-            <a href="#about" class="mobile-link block py-2 text-slate-700 dark:text-slate-200 font-medium hover:text-teal-600">About Me</a>
-            <a href="#skills" class="mobile-link block py-2 text-slate-700 dark:text-slate-200 font-medium hover:text-teal-600">Technical Skills</a>
-            <a href="#projects" class="mobile-link block py-2 text-slate-700 dark:text-slate-200 font-medium hover:text-teal-600">ML & AI Projects</a>
-            <a href="#finance" class="mobile-link block py-2 text-slate-700 dark:text-slate-200 font-medium hover:text-teal-600">Finance Analytics</a>
-            <a href="#credentials" class="mobile-link block py-2 text-slate-700 dark:text-slate-200 font-medium hover:text-teal-600">Credentials</a>
-            <a href="#contact" class="mobile-link block py-2 text-slate-700 dark:text-slate-200 font-medium hover:text-teal-600">Contact</a>
-            <div class="pt-2 border-t border-slate-200 dark:border-slate-800 flex items-center gap-2">
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-100 text-amber-800 dark:bg-amber-950/80 dark:text-amber-300 border border-amber-300 dark:border-amber-800">
-                    <i class="fa-solid fa-crown text-amber-500"></i> UAE Golden Visa Holder
-                </span>
-            </div>
+            <a href="mailto:munee.mohamed@gmail.com" class="hidden sm:inline-flex items-center px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-500 to-accent-600 text-white font-semibold text-sm hover:shadow-lg hover:shadow-brand-500/25 transition-all transform hover:-translate-y-0.5">
+                <i class="fa-regular fa-paper-plane mr-2"></i> Contact Me
+            </a>
         </div>
-    </nav>
+    </header>
 
     <!-- Hero Section -->
-    <section id="home" class="pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden relative">
-        <div class="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
-            <div class="absolute -top-40 -right-40 w-96 h-96 bg-teal-500/10 dark:bg-teal-500/15 rounded-full blur-3xl"></div>
-            <div class="absolute top-1/2 -left-40 w-96 h-96 bg-blue-500/10 dark:bg-blue-500/15 rounded-full blur-3xl"></div>
-        </div>
+    <section class="pt-36 pb-20 relative overflow-hidden">
+        <!-- Background Glows -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-brand-500/10 blur-[120px] rounded-full pointer-events-none"></div>
+        <div class="absolute top-1/3 left-1/3 w-[400px] h-[300px] bg-accent-500/10 blur-[100px] rounded-full pointer-events-none"></div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass-panel border border-brand-500/30 text-brand-400 text-xs font-mono mb-8">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>UAE Golden Visa Holder • Open to Strategic Roles</span>
+            </div>
+
+            <div class="max-w-4xl">
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-none mb-6">
+                    Bridging <span class="gradient-text">Data Science</span> with Executive Financial Intelligence.
+                </h1>
+                <p class="text-lg sm:text-xl text-gray-400 font-normal leading-relaxed mb-10 max-w-3xl">
+                    Data Science & Analytics Specialist with an <strong class="text-white">MSc in Data Science</strong>, <strong class="text-white">CMA USA</strong>, and <strong class="text-white">CA PE II</strong> background. Expertise in building production-ready Machine Learning models, predictive time-series pipelines, and executive BI dashboards.
+                </p>
+
+                <div class="flex flex-wrap items-center gap-4">
+                    <a href="#projects" class="px-8 py-4 rounded-xl bg-gradient-to-r from-brand-500 to-accent-600 text-white font-semibold text-sm shadow-xl shadow-brand-500/20 hover:shadow-brand-500/40 transition-all transform hover:-translate-y-0.5">
+                        <i class="fa-solid fa-diagram-project mr-2"></i> Explore Portfolio Projects
+                    </a>
+                    <a href="mailto:munee.mohamed@gmail.com" class="px-8 py-4 rounded-xl glass-panel text-white font-semibold text-sm hover:bg-white/10 transition-all border border-gray-700">
+                        <i class="fa-regular fa-envelope mr-2"></i> Email Direct
+                    </a>
+                </div>
+            </div>
+
+            <!-- Key Quick Impact Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 pt-10 border-t border-gray-800/80">
+                <div class="p-4 glass-panel rounded-xl">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-brand-400 font-mono mb-1">94–96%</div>
+                    <div class="text-xs text-gray-400 font-medium">Deep Learning MRI Accuracy</div>
+                </div>
+                <div class="p-4 glass-panel rounded-xl">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-emerald-400 font-mono mb-1">35%</div>
+                    <div class="text-xs text-gray-400 font-medium">Forecast Error Reduction</div>
+                </div>
+                <div class="p-4 glass-panel rounded-xl">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-accent-400 font-mono mb-1">30%</div>
+                    <div class="text-xs text-gray-400 font-medium">Faster Month-End Close</div>
+                </div>
+                <div class="p-4 glass-panel rounded-xl">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-purple-400 font-mono mb-1">6+ Yrs</div>
+                    <div class="text-xs text-gray-400 font-medium">Data & Financial Analytics</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                
-                <!-- Left Info Banner -->
-                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-50 dark:bg-teal-950/60 text-teal-700 dark:text-teal-300 border border-teal-200 dark:border-teal-800 text-xs sm:text-sm font-semibold">
-                        <span class="w-2 h-2 rounded-full bg-teal-500 animate-pulse"></span>
-                        Data Science Specialist & Financial Analyst
-                    </div>
-
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
-                        Muneera Mohamed <br/>
-                        <span class="gradient-text">Bridging AI & Strategic Finance</span>
-                    </h1>
-
-                    <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
-                        Data Science & Analytics professional with an <strong class="text-slate-900 dark:text-white">MSc in Data Science</strong> and dual credentials in <strong class="text-slate-900 dark:text-white">CMA USA</strong> and <strong class="text-slate-900 dark:text-white">CA PE II</strong>. Expert at converting complex datasets into predictive insights, automated pipelines, and measurable business growth.
-                    </p>
-
-                    <!-- Contact Details Quick Bar -->
-                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-medium">
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-teal-600"></i> Abu Dhabi, UAE</span>
-                        <span class="hidden sm:inline">•</span>
-                        <a href="mailto:munee.mohamed@gmail.com" class="flex items-center gap-1.5 hover:text-teal-600 transition-colors"><i class="fa-solid fa-envelope text-teal-600"></i> munee.mohamed@gmail.com</a>
-                        <span class="hidden sm:inline">•</span>
-                        <a href="tel:+971566061255" class="flex items-center gap-1.5 hover:text-teal-600 transition-colors"><i class="fa-solid fa-phone text-teal-600"></i> +971 56 606 12 55</a>
-                    </div>
-
-                    <!-- Call to Action Buttons -->
-                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
-                        <a href="#projects" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-semibold text-center transition-all shadow-lg shadow-teal-600/30 hover:shadow-teal-600/40 hover:-translate-y-0.5">
-                            <i class="fa-solid fa-diagram-project mr-2"></i> Explore Projects
-                        </a>
-                        <button onclick="openResumeModal()" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-semibold text-center transition-all hover:-translate-y-0.5 border border-slate-300 dark:border-slate-700">
-                            <i class="fa-solid fa-file-pdf mr-2 text-teal-600"></i> View / Download Resume
-                        </button>
+                <div class="lg:col-span-5">
+                    <div class="gradient-border p-1">
+                        <div class="gradient-border-inner p-8">
+                            <h3 class="text-xl font-bold text-white mb-4">Core Value Proposition</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                                Most organizations struggle with the disconnect between technical ML engineering and bottom-line commercial finance. I bridge this gap by bringing enterprise financial discipline to machine learning models and predictive analytics workflows.
+                            </p>
+                            <div class="space-y-3 font-mono text-xs text-gray-300">
+                                <div class="flex items-center space-x-3 p-3 bg-gray-900/60 rounded-lg border border-gray-800">
+                                    <i class="fa-solid fa-location-dot text-brand-400"></i>
+                                    <span>Based in Abu Dhabi, UAE</span>
+                                </div>
+                                <div class="flex items-center space-x-3 p-3 bg-gray-900/60 rounded-lg border border-gray-800">
+                                    <i class="fa-solid fa-graduation-cap text-accent-400"></i>
+                                    <span>MSc Data Science (France)</span>
+                                </div>
+                                <div class="flex items-center space-x-3 p-3 bg-gray-900/60 rounded-lg border border-gray-800">
+                                    <i class="fa-solid fa-certificate text-emerald-400"></i>
+                                    <span>Certified Management Accountant (CMA USA)</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Right Column - Interactive Stats Showcase Grid -->
-                <div class="lg:col-span-5 grid grid-cols-2 gap-4">
-                    
-                    <div class="p-5 rounded-2xl glass-card shadow-sm hover:shadow-md transition-shadow border border-slate-200 dark:border-slate-800">
-                        <div class="w-10 h-10 rounded-xl bg-teal-100 dark:bg-teal-950 text-teal-600 dark:text-teal-400 flex items-center justify-center mb-3">
-                            <i class="fa-solid fa-brain text-xl"></i>
-                        </div>
-                        <div class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">94-96%</div>
-                        <p class="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">MRI Deep Learning Model Accuracy (50% faster review)</p>
-                    </div>
-
-                    <div class="p-5 rounded-2xl glass-card shadow-sm hover:shadow-md transition-shadow border border-slate-200 dark:border-slate-800">
-                        <div class="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-950 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-3">
-                            <i class="fa-solid fa-chart-line text-xl"></i>
-                        </div>
-                        <div class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">35%</div>
-                        <p class="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">Error Reduction in Retail Time-Series Demand Models</p>
-                    </div>
-
-                    <div class="p-5 rounded-2xl glass-card shadow-sm hover:shadow-md transition-shadow border border-slate-200 dark:border-slate-800">
-                        <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-3">
-                            <i class="fa-solid fa-bolt text-xl"></i>
-                        </div>
-                        <div class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">30%</div>
-                        <p class="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">Faster Financial Month-End Close via Automated Pipelines</p>
-                    </div>
-
-                    <div class="p-5 rounded-2xl glass-card shadow-sm hover:shadow-md transition-shadow border border-slate-200 dark:border-slate-800">
-                        <div class="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-950 text-purple-600 dark:text-purple-400 flex items-center justify-center mb-3">
-                            <i class="fa-solid fa-notes-medical text-xl"></i>
-                        </div>
-                        <div class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">0.86</div>
-                        <p class="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">ROC-AUC COVID-19 Severity Risk Triage System</p>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- About Me Section -->
-    <section id="about" class="py-16 bg-white dark:bg-slate-900/50 border-y border-slate-200 dark:border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-3xl mx-auto text-center mb-12">
-                <h2 class="text-xs uppercase tracking-widest font-bold text-teal-600 dark:text-teal-400 mb-2">Executive Summary</h2>
-                <h3 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">Unique Hybrid: Data Science & Financial Acumen</h3>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                <div class="lg:col-span-8 space-y-4 text-slate-600 dark:text-slate-300 text-base leading-relaxed">
-                    <p>
-                        I am an Abu Dhabi-based Data Science & Analytics Specialist with over 6+ years of versatile professional experience bridging advanced predictive analytics, machine learning, deep learning, and corporate financial intelligence.
+                <div class="lg:col-span-7 space-y-6">
+                    <span class="text-brand-400 font-mono text-xs tracking-wider uppercase">Background & Focus</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">Quantitative Rigor Meets Enterprise Business Execution</h2>
+                    <p class="text-gray-400 text-base leading-relaxed">
+                        With an advanced Master’s degree in Data Science alongside rigorous professional qualifications in financial management (CMA USA and CA PE II), I specialize in transforming unstructured data and complex financial metrics into predictive intelligence.
                     </p>
-                    <p>
-                        Holding an <strong class="text-slate-900 dark:text-white">MSc in Data Science</strong> alongside top finance designations (<strong class="text-slate-900 dark:text-white">CMA USA, CA PE II, BCom</strong>), I offer a distinct competitive advantage: the ability to engineer complex algorithmic models while strictly aligning solutions with strategic financial ROI, risk management, and operational efficiency.
+                    <p class="text-gray-400 text-base leading-relaxed">
+                        My technical toolkit spans end-to-end Machine Learning pipelines, Deep Learning image classification (CNNs with Grad-CAM explainability), time-series retail forecasting, IoT anomaly detection, and automated financial modeling in Power BI with advanced DAX.
                     </p>
-                    <p>
-                        My technical work encompasses building medical imaging CNN architectures with Explainable AI (Grad-CAM), high-performance time-series demand forecasting (Prophet, SARIMA), automated SQL/Python ETL workflows, and interactive Power BI executive dashboards.
-                    </p>
-                </div>
-
-                <!-- Strategic Focus Pillars -->
-                <div class="lg:col-span-4 space-y-3">
-                    <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 flex items-start gap-3">
-                        <i class="fa-solid fa-notes-medical text-teal-600 text-lg mt-1"></i>
-                        <div>
-                            <h4 class="font-bold text-slate-900 dark:text-white text-sm">Healthcare & Medical AI</h4>
-                            <p class="text-xs text-slate-500 dark:text-slate-400">Deep learning classification, clinical triage risk prediction, and SHAP explainability.</p>
-                        </div>
-                    </div>
-
-                    <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 flex items-start gap-3">
-                        <i class="fa-solid fa-boxes-packing text-blue-600 text-lg mt-1"></i>
-                        <div>
-                            <h4 class="font-bold text-slate-900 dark:text-white text-sm">Supply Chain & Time-Series</h4>
-                            <p class="text-xs text-slate-500 dark:text-slate-400">SKU demand forecasting, stockout reduction, and IoT anomaly detection.</p>
-                        </div>
-                    </div>
-
-                    <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 flex items-start gap-3">
-                        <i class="fa-solid fa-chart-pie text-emerald-600 text-lg mt-1"></i>
-                        <div>
-                            <h4 class="font-bold text-slate-900 dark:text-white text-sm">Executive Financial Intelligence</h4>
-                            <p class="text-xs text-slate-500 dark:text-slate-400">DCF valuation models, CapEx/OpEx root-cause analysis, and automated BI systems.</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Interactive Technical Skills Matrix -->
-    <section id="skills" class="py-16 md:py-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-12">
-                <h2 class="text-xs uppercase tracking-widest font-bold text-teal-600 dark:text-teal-400 mb-2">Technical Proficiency</h2>
-                <h3 class="text-3xl font-bold text-slate-900 dark:text-white">Data Science & Analytical Toolkit</h3>
+    <!-- Skills Matrix -->
+    <section id="skills" class="py-20 glass-panel border-y border-gray-800/80">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-14 text-center max-w-2xl mx-auto">
+                <span class="text-brand-400 font-mono text-xs tracking-wider uppercase">Technical & Analytical Stack</span>
+                <h2 class="text-3xl font-bold text-white mt-2">Core Competencies</h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                
-                <!-- Skill Group 1 -->
-                <div class="p-6 rounded-2xl glass-card border border-slate-200 dark:border-slate-800">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-xl bg-teal-100 dark:bg-teal-950 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold">
-                            <i class="fa-solid fa-robot text-lg"></i>
-                        </div>
-                        <h4 class="font-bold text-lg text-slate-900 dark:text-white">Machine Learning & Deep Learning</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Machine Learning & AI -->
+                <div class="p-6 glass-panel rounded-2xl glass-panel-hover">
+                    <div class="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-400 flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-brain"></i>
                     </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-teal-50 dark:bg-teal-950/80 text-teal-700 dark:text-teal-300 border border-teal-200 dark:border-teal-800">CNNs & Computer Vision</span>
-                        <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-teal-50 dark:bg-teal-950/80 text-teal-700 dark:text-teal-300 border border-teal-200 dark:border-teal-800">GBM & XGBoost</span>
-                        <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-teal-50 dark:bg-teal-950/80 text-teal-700 dark:text-teal-300 border border-teal-200 dark:border-teal-800">Random Forest / SVM / KNN</span>
-                        <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-teal-50 dark:bg-teal-950/80 text-teal-700 dark:text-teal-300 border border-teal-200 dark:border-teal-800">SHAP & Grad-CAM (XAI)</span>
-                        <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-teal-50 dark:bg-teal-950/80 text-teal-700 dark:text-teal-300 border border-teal-200 dark:border-teal-800">LazyClassifier & CV</span>
-                    </div>
+                    <h3 class="text-lg font-bold text-white mb-3">Machine Learning & AI</h3>
+                    <ul class="text-xs text-gray-400 space-y-2.5 font-medium">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand-400 mr-2"></i> CNNs & Medical Imaging</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand-400 mr-2"></i> Gradient Boosting (GBM)</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand-400 mr-2"></i> Explainable AI (SHAP, Grad-CAM)</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand-400 mr-2"></i> Feature Engineering Pipelines</li>
+                    </ul>
                 </div>
 
-                <!-- Skill Group 2 -->
-                <div class="p-6 rounded-2xl glass-card border border-slate-200 dark:border-slate-800">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-950 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold">
-                            <i class="fa-solid fa-chart-line text-lg"></i>
-                        </div>
-                        <h4 class="font-bold text-lg text-slate-900 dark:text-white">Predictive & Time-Series</h4>
+                <!-- Predictive Modeling -->
+                <div class="p-6 glass-panel rounded-2xl glass-panel-hover">
+                    <div class="w-12 h-12 rounded-xl bg-accent-500/10 text-accent-400 flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-chart-line"></i>
                     </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-50 dark:bg-blue-950/80 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">ARIMA & SARIMA</span>
-                        <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-50 dark:bg-blue-950/80 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">FB Prophet</span>
-                        <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-50 dark:bg-blue-950/80 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">Holt-Winters Smoothing</span>
-                        <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-50 dark:bg-blue-950/80 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">Anomaly Detection</span>
-                        <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-50 dark:bg-blue-950/80 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">Statistical Computing</span>
-                    </div>
+                    <h3 class="text-lg font-bold text-white mb-3">Time-Series & Analytics</h3>
+                    <ul class="text-xs text-gray-400 space-y-2.5 font-medium">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-accent-400 mr-2"></i> ARIMA, SARIMA, Prophet</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-accent-400 mr-2"></i> IoT Sensor Anomaly Detection</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-accent-400 mr-2"></i> Statistical Hypothesis Testing</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-accent-400 mr-2"></i> Demand & Inventory Forecasting</li>
+                    </ul>
                 </div>
 
-                <!-- Skill Group 3 -->
-                <div class="p-6 rounded-2xl glass-card border border-slate-200 dark:border-slate-800">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-950 text-purple-600 dark:text-purple-400 flex items-center justify-center font-bold">
-                            <i class="fa-solid fa-chart-column text-lg"></i>
-                        </div>
-                        <h4 class="font-bold text-lg text-slate-900 dark:text-white">BI & Data Visualization</h4>
+                <!-- BI & Visualization -->
+                <div class="p-6 glass-panel rounded-2xl glass-panel-hover">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-chart-pie"></i>
                     </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-purple-50 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800">Power BI (Advanced DAX)</span>
-                        <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-purple-50 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800">Tableau</span>
-                        <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-purple-50 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800">Looker Studio</span>
-                        <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-purple-50 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800">Interactive Storytelling</span>
-                        <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-purple-50 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800">KPI Tracking Dashboards</span>
-                    </div>
+                    <h3 class="text-lg font-bold text-white mb-3">BI & Visualization</h3>
+                    <ul class="text-xs text-gray-400 space-y-2.5 font-medium">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Power BI (Advanced DAX)</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Looker Studio & Tableau</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Executive KPI Dashboards</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Automated Data Pipelines</li>
+                    </ul>
                 </div>
 
-                <!-- Skill Group 4 -->
-                <div class="p-6 rounded-2xl glass-card border border-slate-200 dark:border-slate-800">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold">
-                            <i class="fa-solid fa-coins text-lg"></i>
-                        </div>
-                        <h4 class="font-bold text-lg text-slate-900 dark:text-white">Financial Intelligence</h4>
+                <!-- Financial Intelligence -->
+                <div class="p-6 glass-panel rounded-2xl glass-panel-hover">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-coins"></i>
                     </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">DCF Valuation Modeling</span>
-                        <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">Sensitivity & Scenario Analysis</span>
-                        <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">Variance & Cost Analysis</span>
-                        <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">CapEx / OpEx Optimization</span>
-                        <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">Financial Audit Controls</span>
-                    </div>
+                    <h3 class="text-lg font-bold text-white mb-3">Financial Analytics</h3>
+                    <ul class="text-xs text-gray-400 space-y-2.5 font-medium">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-purple-400 mr-2"></i> DCF & Valuation Modeling</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-purple-400 mr-2"></i> Variance & Root Cause Analysis</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-purple-400 mr-2"></i> CapEx/OpEx Optimization</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-purple-400 mr-2"></i> Cash-Flow & Feasibility Models</li>
+                    </ul>
                 </div>
-
-                <!-- Skill Group 5 -->
-                <div class="p-6 rounded-2xl glass-card border border-slate-200 dark:border-slate-800 md:col-span-2 lg:col-span-2">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-950 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold">
-                            <i class="fa-solid fa-code text-lg"></i>
-                        </div>
-                        <h4 class="font-bold text-lg text-slate-900 dark:text-white">Core Languages & Data Engineering</h4>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-amber-50 dark:bg-amber-950/80 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800">Python (Pandas, NumPy, Scikit-learn, TensorFlow)</span>
-                        <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-amber-50 dark:bg-amber-950/80 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800">SQL (Data Wrangling, Complex Queries, Joins)</span>
-                        <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-amber-50 dark:bg-amber-950/80 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800">Advanced Excel & VBA</span>
-                        <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-amber-50 dark:bg-amber-950/80 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800">ETL Pipelines</span>
-                        <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-amber-50 dark:bg-amber-950/80 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800">Feature Validation Pipelines</span>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Interactive Projects Showcase Section -->
-    <section id="projects" class="py-16 md:py-24 bg-slate-100/70 dark:bg-slate-900/40 border-t border-slate-200 dark:border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+    <!-- Projects Section -->
+    <section id="projects" class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
                 <div>
-                    <h2 class="text-xs uppercase tracking-widest font-bold text-teal-600 dark:text-teal-400 mb-2">Applied Data Science</h2>
-                    <h3 class="text-3xl font-bold text-slate-900 dark:text-white">Featured Analytics & ML Projects</h3>
-                </div>
-
-                <!-- Interactive Category Filter -->
-                <div class="flex flex-wrap gap-2 mt-4 md:mt-0" id="projectFilters">
-                    <button onclick="filterProjects('all')" class="filter-btn active px-4 py-2 rounded-xl text-xs font-semibold bg-teal-600 text-white transition-all shadow-sm">All</button>
-                    <button onclick="filterProjects('healthcare')" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 border border-slate-200 dark:border-slate-700 transition-all">Healthcare AI</button>
-                    <button onclick="filterProjects('forecasting')" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 border border-slate-200 dark:border-slate-700 transition-all">Time-Series & Supply Chain</button>
-                    <button onclick="filterProjects('iot')" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 border border-slate-200 dark:border-slate-700 transition-all">IoT & Energy</button>
+                    <span class="text-brand-400 font-mono text-xs tracking-wider uppercase">Applied Innovation</span>
+                    <h2 class="text-3xl font-bold text-white mt-2">Featured Applied ML & Data Science Projects</h2>
                 </div>
             </div>
 
-            <!-- Project Cards Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projectsGrid">
-                
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
                 <!-- Project 1 -->
-                <div class="project-card glass-card rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 flex flex-col justify-between" data-category="healthcare">
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-3">
-                            <span class="px-2.5 py-1 rounded-md text-xs font-bold bg-teal-100 dark:bg-teal-950 text-teal-700 dark:text-teal-300">Medical Imaging</span>
-                            <span class="text-xs font-semibold text-slate-500">2024-2025</span>
+                <div class="glass-panel rounded-2xl p-6 glass-panel-hover flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded-full text-[10px] font-mono font-semibold bg-brand-500/10 text-brand-400 border border-brand-500/20">Deep Learning & Healthcare</span>
+                            <span class="text-xs font-mono text-emerald-400 font-bold">94–96% Acc</span>
                         </div>
-                        <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Brain Tumor MRI Classification</h4>
-                        <p class="text-xs text-slate-600 dark:text-slate-400 mb-4 line-clamp-3">
-                            Deep learning CNN framework for classifying brain MRI scans with Grad-CAM explainability for clinical decision support.
+                        <h3 class="text-xl font-bold text-white mb-3">Brain Tumor MRI Classification</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed mb-6">
+                            Developed CNN architectures for MRI medical image classification. Integrated Grad-CAM for model explainability and decision visualization, enabling clinical trust and cutting review time by 50%.
                         </p>
-
-                        <div class="space-y-2 mb-4">
-                            <div class="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300">
-                                <i class="fa-solid fa-circle-check text-teal-500"></i>
-                                <span><strong>94-96%</strong> Accuracy across CNN architectures</span>
-                            </div>
-                            <div class="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300">
-                                <i class="fa-solid fa-circle-check text-teal-500"></i>
-                                <span><strong>50%</strong> reduction in radiologist review time</span>
-                            </div>
-                            <div class="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300">
-                                <i class="fa-solid fa-circle-check text-teal-500"></i>
-                                <span>Grad-CAM heatmaps for model transparency</span>
-                            </div>
-                        </div>
-
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Python</span>
-                            <span class="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">CNN</span>
-                            <span class="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Grad-CAM</span>
-                            <span class="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">OpenCV</span>
-                        </div>
                     </div>
-
-                    <div class="px-6 py-3 bg-slate-50 dark:bg-slate-800/50 border-t border-slate-200 dark:border-slate-800">
-                        <button onclick="openModal('project1')" class="text-xs font-bold text-teal-600 dark:text-teal-400 hover:text-teal-700 flex items-center justify-between w-full">
-                            View Case Details <i class="fa-solid fa-arrow-right"></i>
-                        </button>
+                    <div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 rounded text-[10px] font-mono bg-gray-800 text-gray-300">Python</span>
+                            <span class="px-2 py-1 rounded text-[10px] font-mono bg-gray-800 text-gray-300">TensorFlow</span>
+                            <span class="px-2 py-1 rounded text-[10px] font-mono bg-gray-800 text-gray-300">CNN</span>
+                            <span class="px-2 py-1 rounded text-[10px] font-mono bg-gray-800 text-gray-300">Grad-CAM</span>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Project 2 -->
-                <div class="project-card glass-card rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 flex flex-col justify-between" data-category="healthcare">
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-3">
-                            <span class="px-2.5 py-1 rounded-md text-xs font-bold bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300">Healthcare Analytics</span>
-                            <span class="text-xs font-semibold text-slate-500">2024</span>
+                <div class="glass-panel rounded-2xl p-6 glass-panel-hover flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded-full text-[10px] font-mono font-semibold bg-accent-500/10 text-accent-400 border border-accent-500/20">Predictive Analytics</span>
+                            <span class="text-xs font-mono text-emerald-400 font-bold">0.86 ROC-AUC</span>
                         </div>
-                        <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-2">COVID-19 Severity Triage Model</h4>
-                        <p class="text-xs text-slate-600 dark:text-slate-400 mb-4 line-clamp-3">
-                            GBM risk stratification model utilizing comorbidities and hospital metrics to streamline medical facility triage.
+                        <h3 class="text-xl font-bold text-white mb-3">COVID-19 Triage & Severity Prediction</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed mb-6">
+                            End-to-end classification system using Gradient Boosting Models (GBM). Benchmarked 20+ algorithms via LazyClassifier and engineered feature-importance frameworks to streamline clinical decision time by 40%.
                         </p>
-
-                        <div class="space-y-2 mb-4">
-                            <div class="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300">
-                                <i class="fa-solid fa-circle-check text-blue-500"></i>
-                                <span><strong>0.86 ROC-AUC</strong> predictive score</span>
-                            </div>
-                            <div class="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300">
-                                <i class="fa-solid fa-circle-check text-blue-500"></i>
-                                <span><strong>32%</strong> improvement in triage accuracy</span>
-                            </div>
-                            <div class="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300">
-                                <i class="fa-solid fa-circle-check text-blue-500"></i>
-                                <span>Benchmarked 20+ models via LazyClassifier</span>
-                            </div>
-                        </div>
-
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">GBM</span>
-                            <span class="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Scikit-learn</span>
-                            <span class="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Power BI</span>
-                        </div>
                     </div>
-
-                    <div class="px-6 py-3 bg-slate-50 dark:bg-slate-800/50 border-t border-slate-200 dark:border-slate-800">
-                        <button onclick="openModal('project2')" class="text-xs font-bold text-blue-600 dark:text-blue-400 hover:text-blue-700 flex items-center justify-between w-full">
-                            View Case Details <i class="fa-solid fa-arrow-right"></i>
-                        </button>
+                    <div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 rounded text-[10px] font-mono bg-gray-800 text-gray-300">Python</span>
+                            <span class="px-2 py-1 rounded text-[10px] font-mono bg-gray-800 text-gray-300">GBM</span>
+                            <span class="px-2 py-1 rounded text-[10px] font-mono bg-gray-800 text-gray-300">Scikit-Learn</span>
+                            <span class="px-2 py-1 rounded text-[10px] font-mono bg-gray-800 text-gray-300">Power BI</span>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Project 3 -->
-                <div class="project-card glass-card rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 flex flex-col justify-between" data-category="healthcare">
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-3">
-                            <span class="px-2.5 py-1 rounded-md text-xs font-bold bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300">Explainable AI</span>
-                            <span class="text-xs font-semibold text-slate-500">2024</span>
+                <div class="glass-panel rounded-2xl p-6 glass-panel-hover flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded-full text-[10px] font-mono font-semibold bg-purple-500/10 text-purple-400 border border-purple-500/20">Explainable AI</span>
+                            <span class="text-xs font-mono text-emerald-400 font-bold">89.7% Accuracy</span>
                         </div>
-                        <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Heart Disease Prediction System</h4>
-                        <p class="text-xs text-slate-600 dark:text-slate-400 mb-4 line-clamp-3">
-                            Leakage-safe clinical decision pipeline utilizing SHAP values to assess false-negative risks and clinical factors.
+                        <h3 class="text-xl font-bold text-white mb-3">Heart Disease Clinical Risk Decision Support</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed mb-6">
+                            Built ML classifiers with leakage-safe validation and 5-fold cross-validation. Applied SHAP values to explain individual patient risk factor contributions and assess false-negative risks.
                         </p>
-
-                        <div class="space-y-2 mb-4">
-                            <div class="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300">
-                                <i class="fa-solid fa-circle-check text-purple-500"></i>
-                                <span><strong>89.7% Accuracy</strong> | <strong>90.2% Recall</strong></span>
-                            </div>
-                            <div class="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300">
-                                <i class="fa-solid fa-circle-check text-purple-500"></i>
-                                <span><strong>0.939 ROC-AUC</strong> (5-fold cross-validation)</span>
-                            </div>
-                            <div class="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300">
-                                <i class="fa-solid fa-circle-check text-purple-500"></i>
-                                <span>SHAP explainability for clinician trust</span>
-                            </div>
-                        </div>
-
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">SHAP</span>
-                            <span class="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Python</span>
-                            <span class="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Pipeline</span>
-                        </div>
                     </div>
-
-                    <div class="px-6 py-3 bg-slate-50 dark:bg-slate-800/50 border-t border-slate-200 dark:border-slate-800">
-                        <button onclick="openModal('project3')" class="text-xs font-bold text-purple-600 dark:text-purple-400 hover:text-purple-700 flex items-center justify-between w-full">
-                            View Case Details <i class="fa-solid fa-arrow-right"></i>
-                        </button>
+                    <div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 rounded text-[10px] font-mono bg-gray-800 text-gray-300">Python</span>
+                            <span class="px-2 py-1 rounded text-[10px] font-mono bg-gray-800 text-gray-300">SHAP</span>
+                            <span class="px-2 py-1 rounded text-[10px] font-mono bg-gray-800 text-gray-300">ML Pipelines</span>
+                            <span class="px-2 py-1 rounded text-[10px] font-mono bg-gray-800 text-gray-300">Cross-Validation</span>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Project 4 -->
-                <div class="project-card glass-card rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 flex flex-col justify-between" data-category="forecasting">
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-3">
-                            <span class="px-2.5 py-1 rounded-md text-xs font-bold bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300">Time-Series Analytics</span>
-                            <span class="text-xs font-semibold text-slate-500">2023-2024</span>
+                <div class="glass-panel rounded-2xl p-6 glass-panel-hover flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Time-Series & Retail</span>
+                            <span class="text-xs font-mono text-emerald-400 font-bold">-35% Forecast Error</span>
                         </div>
-                        <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Retail Demand & Inventory Forecasting</h4>
-                        <p class="text-xs text-slate-600 dark:text-slate-400 mb-4 line-clamp-3">
-                            Multi-model SKU demand forecasting pipeline using ARIMA, SARIMA, Prophet, and Holt-Winters to optimize stock level.
+                        <h3 class="text-xl font-bold text-white mb-3">Retail Demand Forecasting Pipeline</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed mb-6">
+                            Built SKU-level time-series models (ARIMA, SARIMA, Prophet, Holt-Winters) integrated with automated Python + SQL data pipelines. Reduced stockouts by 30% and lost sales by 40%.
                         </p>
-
-                        <div class="space-y-2 mb-4">
-                            <div class="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300">
-                                <i class="fa-solid fa-circle-check text-amber-500"></i>
-                                <span><strong>35% Error Reduction</strong> in SKU predictions</span>
-                            </div>
-                            <div class="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300">
-                                <i class="fa-solid fa-circle-check text-amber-500"></i>
-                                <span><strong>40% Reduction</strong> in lost sales & stockouts</span>
-                            </div>
-                            <div class="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300">
-                                <i class="fa-solid fa-circle-check text-amber-500"></i>
-                                <span><strong>70% automated</strong> forecasting effort cut</span>
-                            </div>
-                        </div>
-
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Prophet</span>
-                            <span class="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">SARIMA</span>
-                            <span class="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">SQL</span>
-                            <span class="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Python</span>
-                        </div>
                     </div>
-
-                    <div class="px-6 py-3 bg-slate-50 dark:bg-slate-800/50 border-t border-slate-200 dark:border-slate-800">
-                        <button onclick="openModal('project4')" class="text-xs font-bold text-amber-600 dark:text-amber-400 hover:text-amber-700 flex items-center justify-between w-full">
-                            View Case Details <i class="fa-solid fa-arrow-right"></i>
-                        </button>
+                    <div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 rounded text-[10px] font-mono bg-gray-800 text-gray-300">ARIMA</span>
+                            <span class="px-2 py-1 rounded text-[10px] font-mono bg-gray-800 text-gray-300">Prophet</span>
+                            <span class="px-2 py-1 rounded text-[10px] font-mono bg-gray-800 text-gray-300">SQL</span>
+                            <span class="px-2 py-1 rounded text-[10px] font-mono bg-gray-800 text-gray-300">Python</span>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Project 5 -->
-                <div class="project-card glass-card rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 flex flex-col justify-between" data-category="iot">
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-3">
-                            <span class="px-2.5 py-1 rounded-md text-xs font-bold bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300">IoT Analytics</span>
-                            <span class="text-xs font-semibold text-slate-500">2023</span>
-                        </div>
-                        <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Smart Home Energy Anomaly Detection</h4>
-                        <p class="text-xs text-slate-600 dark:text-slate-400 mb-4 line-clamp-3">
-                            IoT computational research project utilizing SVM, Random Forest, and KNN for real-time energy usage anomaly detection.
-                        </p>
-
-                        <div class="space-y-2 mb-4">
-                            <div class="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300">
-                                <i class="fa-solid fa-circle-check text-emerald-500"></i>
-                                <span><strong>38% Precision Gain</strong> in detecting waste</span>
-                            </div>
-                            <div class="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300">
-                                <i class="fa-solid fa-circle-check text-emerald-500"></i>
-                                <span><strong>12.6% Energy waste reduction</strong></span>
-                            </div>
-                            <div class="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300">
-                                <i class="fa-solid fa-circle-check text-emerald-500"></i>
-                                <span><strong>50% faster</strong> abnormal usage resolution</span>
-                            </div>
-                        </div>
-
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Random Forest</span>
-                            <span class="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">SVM</span>
-                            <span class="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">IoT Sensors</span>
-                        </div>
-                    </div>
-
-                    <div class="px-6 py-3 bg-slate-50 dark:bg-slate-800/50 border-t border-slate-200 dark:border-slate-800">
-                        <button onclick="openModal('project5')" class="text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 flex items-center justify-between w-full">
-                            View Case Details <i class="fa-solid fa-arrow-right"></i>
-                        </button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Financial Analytics & Experience Section -->
-    <section id="finance" class="py-16 md:py-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-12">
-                <h2 class="text-xs uppercase tracking-widest font-bold text-teal-600 dark:text-teal-400 mb-2">Corporate Record</h2>
-                <h3 class="text-3xl font-bold text-slate-900 dark:text-white">Financial & Business Analytics Experience</h3>
-            </div>
-
-            <!-- Experience Timeline Cards -->
-            <div class="space-y-6 max-w-4xl mx-auto">
-                
-                <!-- Role 1 -->
-                <div class="p-6 sm:p-8 rounded-2xl glass-card border border-slate-200 dark:border-slate-800 relative">
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
-                        <div>
-                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-teal-100 dark:bg-teal-950 text-teal-700 dark:text-teal-300 mb-2 inline-block">Abu Dhabi, UAE</span>
-                            <h4 class="text-xl font-bold text-slate-900 dark:text-white">Financial Analyst</h4>
-                            <p class="text-sm font-semibold text-slate-600 dark:text-slate-400">Creative Education Services LLC</p>
-                        </div>
-                        <span class="text-xs sm:text-sm font-bold text-slate-500 bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-lg w-fit">May 2019 – Jun 2022</span>
-                    </div>
-
-                    <ul class="space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300 list-disc list-inside leading-relaxed">
-                        <li>Modernized multi-unit financial reporting with automated data pipelines, improving accuracy by <strong class="text-slate-900 dark:text-white">22%</strong> and reducing month-end close time by <strong class="text-slate-900 dark:text-white">30%</strong>.</li>
-                        <li>Built statistical root-cause models to identify cost variances, uncovering <strong class="text-slate-900 dark:text-white">10% in operational savings</strong> and boosting budget efficiency by <strong class="text-slate-900 dark:text-white">12%</strong>.</li>
-                        <li>Designed automated Power BI dashboards for enrollment and retention KPIs, contributing to a <strong class="text-slate-900 dark:text-white">10% increase in student retention</strong>.</li>
-                        <li>Delivered DCF valuation, feasibility, sensitivity, and scenario models supporting expansion decisions.</li>
-                        <li>Analyzed CapEx/OpEx spending to reduce discretionary expenses by <strong class="text-slate-900 dark:text-white">20%</strong> while improving cash-flow forecasting.</li>
-                    </ul>
-                </div>
-
-                <!-- Role 2 -->
-                <div class="p-6 sm:p-8 rounded-2xl glass-card border border-slate-200 dark:border-slate-800 relative">
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
-                        <div>
-                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 mb-2 inline-block">Dubai, UAE</span>
-                            <h4 class="text-xl font-bold text-slate-900 dark:text-white">Finance Officer</h4>
-                            <p class="text-sm font-semibold text-slate-600 dark:text-slate-400">Arka Global Marine LLC</p>
-                        </div>
-                        <span class="text-xs sm:text-sm font-bold text-slate-500 bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-lg w-fit">Jan 2016 – Jun 2018</span>
-                    </div>
-
-                    <ul class="space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300 list-disc list-inside leading-relaxed">
-                        <li>Engineered financial and valuation models for vessel economics to guide strategic capital investments.</li>
-                        <li>Automated supplier reconciliation and invoice workflows to minimize audit discrepancies and improve reporting transparency.</li>
-                        <li>Prepared monthly client portfolio performance metrics and mentored junior analytical staff.</li>
-                    </ul>
-                </div>
-
-                <!-- Role 3 -->
-                <div class="p-6 sm:p-8 rounded-2xl glass-card border border-slate-200 dark:border-slate-800 relative">
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
-                        <div>
-                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300 mb-2 inline-block">India</span>
-                            <h4 class="text-xl font-bold text-slate-900 dark:text-white">Audit Associate</h4>
-                            <p class="text-sm font-semibold text-slate-600 dark:text-slate-400">Korah & Korah, Chartered Accountants</p>
-                        </div>
-                        <span class="text-xs sm:text-sm font-bold text-slate-500 bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-lg w-fit">Apr 2007 – Jun 2010</span>
-                    </div>
-
-                    <ul class="space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300 list-disc list-inside leading-relaxed">
-                        <li>Performed comprehensive financial audits and presented statutory findings to enhance client compliance.</li>
-                        <li>Established rigorous foundation in data accuracy, financial controls, and corporate accounting frameworks.</li>
-                    </ul>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Credentials & Education Section -->
-    <section id="credentials" class="py-16 md:py-24 bg-white dark:bg-slate-900/50 border-t border-slate-200 dark:border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-12">
-                <h2 class="text-xs uppercase tracking-widest font-bold text-teal-600 dark:text-teal-400 mb-2">Qualifications</h2>
-                <h3 class="text-3xl font-bold text-slate-900 dark:text-white">Academic Degrees & Professional Certifications</h3>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                
-                <!-- Education Column -->
-                <div class="space-y-4">
-                    <h4 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2 mb-4">
-                        <i class="fa-solid fa-graduation-cap text-teal-600"></i> Education
-                    </h4>
-
-                    <div class="p-5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
-                        <h5 class="font-bold text-slate-900 dark:text-white text-base">MSc in Data Science</h5>
-                        <p class="text-xs font-semibold text-teal-600 dark:text-teal-400">Ascencia Business School, France</p>
-                    </div>
-
-                    <div class="p-5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
-                        <h5 class="font-bold text-slate-900 dark:text-white text-base">Certified Management Accountant (CMA)</h5>
-                        <p class="text-xs font-semibold text-teal-600 dark:text-teal-400">Institute of Management Accountants (IMA), USA</p>
-                    </div>
-
-                    <div class="p-5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
-                        <h5 class="font-bold text-slate-900 dark:text-white text-base">CA (Professional Education II)</h5>
-                        <p class="text-xs font-semibold text-teal-600 dark:text-teal-400">The Institute of Chartered Accountants of India (ICAI)</p>
-                    </div>
-
-                    <div class="p-5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
-                        <h5 class="font-bold text-slate-900 dark:text-white text-base">Bachelor of Commerce (B.Com)</h5>
-                        <p class="text-xs font-semibold text-teal-600 dark:text-teal-400">Mahatma Gandhi University, India</p>
-                    </div>
-                </div>
-
-                <!-- Certifications Column -->
-                <div class="space-y-4">
-                    <h4 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2 mb-4">
-                        <i class="fa-solid fa-certificate text-blue-600"></i> Certifications & Training
-                    </h4>
-
-                    <div class="p-5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
-                        <h5 class="font-bold text-slate-900 dark:text-white text-base">Certified Business Analysis Professional</h5>
-                        <p class="text-xs font-semibold text-blue-600 dark:text-blue-400">CHRD, UAE | 2023</p>
-                    </div>
-
-                    <div class="p-5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
-                        <h5 class="font-bold text-slate-900 dark:text-white text-base">Certified Specialist in Data Science & Analytics</h5>
-                        <p class="text-xs font-semibold text-blue-600 dark:text-blue-400">ICTAK | 2023</p>
-                    </div>
-
-                    <div class="p-5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
-                        <h5 class="font-bold text-slate-900 dark:text-white text-base">Data Modelling with Power BI: Advanced DAX</h5>
-                        <p class="text-xs font-semibold text-blue-600 dark:text-blue-400">Coursera</p>
-                    </div>
-
-                    <div class="p-5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
-                        <h5 class="font-bold text-slate-900 dark:text-white text-base">Languages</h5>
-                        <p class="text-xs text-slate-600 dark:text-slate-300 mt-1">English (Fluent), Hindi (Fluent), Malayalam (Fluent), Tamil (Basic), Arabic (Basic)</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 md:py-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-                
-                <div class="lg:col-span-5 space-y-6">
+                <div class="glass-panel rounded-2xl p-6 glass-panel-hover flex flex-col justify-between">
                     <div>
-                        <h2 class="text-xs uppercase tracking-widest font-bold text-teal-600 dark:text-teal-400 mb-2">Get In Touch</h2>
-                        <h3 class="text-3xl font-bold text-slate-900 dark:text-white">Let's Connect</h3>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded-full text-[10px] font-mono font-semibold bg-yellow-500/10 text-yellow-400 border border-yellow-500/20">IoT & Energy</span>
+                            <span class="text-xs font-mono text-emerald-400 font-bold">+38% Precision</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">IoT Smart Home Energy & Anomaly Detection</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed mb-6">
+                            Evaluated IoT sensor streams with Random Forest, SVM, and KNN to detect usage anomalies. Reduced energy waste by 12.6% and cut abnormal usage investigation time by 50%.
+                        </p>
                     </div>
-
-                    <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                        I am currently open to opportunity inquiries across Data Science, Machine Learning, Predictive Analytics, and Financial Analytics roles in the UAE and internationally.
-                    </p>
-
-                    <div class="space-y-4 pt-2">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-xl bg-teal-100 dark:bg-teal-950 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold">
-                                <i class="fa-solid fa-envelope text-lg"></i>
-                            </div>
-                            <div>
-                                <span class="text-xs font-medium text-slate-500">Email Address</span>
-                                <a href="mailto:munee.mohamed@gmail.com" class="block font-bold text-slate-900 dark:text-white hover:text-teal-600">munee.mohamed@gmail.com</a>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-950 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold">
-                                <i class="fa-solid fa-phone text-lg"></i>
-                            </div>
-                            <div>
-                                <span class="text-xs font-medium text-slate-500">Phone & WhatsApp</span>
-                                <a href="tel:+971566061255" class="block font-bold text-slate-900 dark:text-white hover:text-blue-600">+971 56 606 12 55</a>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-950 text-purple-600 dark:text-purple-400 flex items-center justify-center font-bold">
-                                <i class="fa-solid fa-location-dot text-lg"></i>
-                            </div>
-                            <div>
-                                <span class="text-xs font-medium text-slate-500">Location</span>
-                                <p class="font-bold text-slate-900 dark:text-white">Abu Dhabi, United Arab Emirates</p>
-                            </div>
+                    <div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 rounded text-[10px] font-mono bg-gray-800 text-gray-300">Random Forest</span>
+                            <span class="px-2 py-1 rounded text-[10px] font-mono bg-gray-800 text-gray-300">SVM</span>
+                            <span class="px-2 py-1 rounded text-[10px] font-mono bg-gray-800 text-gray-300">Time-Series</span>
+                            <span class="px-2 py-1 rounded text-[10px] font-mono bg-gray-800 text-gray-300">IoT Analytics</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Contact Interactive Form -->
-                <div class="lg:col-span-7">
-                    <form id="contactForm" onsubmit="handleFormSubmit(event)" class="p-8 rounded-2xl glass-card border border-slate-200 dark:border-slate-800 space-y-4">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Experience -->
+    <section id="experience" class="py-20 glass-panel border-y border-gray-800/80">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-14 max-w-2xl">
+                <span class="text-brand-400 font-mono text-xs tracking-wider uppercase">Track Record</span>
+                <h2 class="text-3xl font-bold text-white mt-2">Professional Experience</h2>
+            </div>
+
+            <div class="space-y-8 relative before:absolute before:inset-0 before:left-3 md:before:left-1/2 before:-translate-x-px before:h-full before:w-0.5 before:bg-gray-800">
+
+                <!-- Job 1 -->
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                    <div class="flex items-center justify-center w-7 h-7 rounded-full bg-brand-500 text-white font-bold text-xs shadow-lg shadow-brand-500/50 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                        1
+                    </div>
+                    <div class="w-[calc(100%-2.5rem)] md:w-[calc(50%-2.5rem)] glass-panel p-6 rounded-2xl">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-mono text-brand-400">May 2019 – Jun 2022</span>
+                            <span class="text-xs text-gray-400">Abu Dhabi, UAE</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Financial Analyst</h3>
+                        <h4 class="text-xs text-gray-300 mb-4 font-semibold">Creative Education Services LLC</h4>
+                        <ul class="text-xs text-gray-400 space-y-2 list-disc list-inside">
+                            <li>Automated multi-unit financial data pipelines, reducing month-end close time by 30% and improving reporting accuracy by 22%.</li>
+                            <li>Built statistical variance models identifying cost inefficiencies, uncovering 10% in savings and enhancing budget efficiency by 12%.</li>
+                            <li>Designed Power BI dashboards for enrollment and retention KPIs, contributing to a 10% increase in student retention.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Job 2 -->
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                    <div class="flex items-center justify-center w-7 h-7 rounded-full bg-accent-500 text-white font-bold text-xs shadow-lg shadow-accent-500/50 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                        2
+                    </div>
+                    <div class="w-[calc(100%-2.5rem)] md:w-[calc(50%-2.5rem)] glass-panel p-6 rounded-2xl">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-mono text-accent-400">Jan 2016 – Jun 2018</span>
+                            <span class="text-xs text-gray-400">Dubai, UAE</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Finance Officer</h3>
+                        <h4 class="text-xs text-gray-300 mb-4 font-semibold">Arka Global Marine LLC</h4>
+                        <ul class="text-xs text-gray-400 space-y-2 list-disc list-inside">
+                            <li>Developed financial and valuation models for vessel economics to guide strategic asset investments.</li>
+                            <li>Automated invoice reconciliation and variance analysis workflows to ensure operational transparency.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Job 3 -->
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                    <div class="flex items-center justify-center w-7 h-7 rounded-full bg-emerald-500 text-white font-bold text-xs shadow-lg shadow-emerald-500/50 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                        3
+                    </div>
+                    <div class="w-[calc(100%-2.5rem)] md:w-[calc(50%-2.5rem)] glass-panel p-6 rounded-2xl">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-mono text-emerald-400">Apr 2007 – Jun 2010</span>
+                            <span class="text-xs text-gray-400">India</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Audit Associate</h3>
+                        <h4 class="text-xs text-gray-300 mb-4 font-semibold">Korah & Korah, Chartered Accountants</h4>
+                        <ul class="text-xs text-gray-400 space-y-2 list-disc list-inside">
+                            <li>Performed comprehensive financial audits and internal controls evaluations to ensure regulatory compliance.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Credentials -->
+    <section id="credentials" class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-14 text-center max-w-2xl mx-auto">
+                <span class="text-brand-400 font-mono text-xs tracking-wider uppercase">Academic & Professional Credentials</span>
+                <h2 class="text-3xl font-bold text-white mt-2">Education & Certifications</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                <!-- Education -->
+                <div class="glass-panel p-6 rounded-2xl">
+                    <h3 class="text-lg font-bold text-white mb-6 flex items-center">
+                        <i class="fa-solid fa-graduation-cap text-brand-400 mr-3"></i> Academic Qualifications
+                    </h3>
+                    <div class="space-y-6">
+                        <div class="border-l-2 border-brand-500 pl-4">
+                            <h4 class="text-sm font-bold text-white">MSc in Data Science</h4>
+                            <p class="text-xs text-gray-400">Ascencia Business School, France</p>
+                        </div>
+                        <div class="border-l-2 border-accent-500 pl-4">
+                            <h4 class="text-sm font-bold text-white">Certified Management Accountant (CMA)</h4>
+                            <p class="text-xs text-gray-400">Institute of Management Accountants (IMA), USA</p>
+                        </div>
+                        <div class="border-l-2 border-purple-500 pl-4">
+                            <h4 class="text-sm font-bold text-white">CA (Professional Education II)</h4>
+                            <p class="text-xs text-gray-400">The Institute of Chartered Accountants of India (ICAI)</p>
+                        </div>
+                        <div class="border-l-2 border-emerald-500 pl-4">
+                            <h4 class="text-sm font-bold text-white">Bachelor of Commerce (B.Com)</h4>
+                            <p class="text-xs text-gray-400">Mahatma Gandhi University, India</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certifications -->
+                <div class="glass-panel p-6 rounded-2xl">
+                    <h3 class="text-lg font-bold text-white mb-6 flex items-center">
+                        <i class="fa-solid fa-award text-accent-400 mr-3"></i> Specialized Certifications
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="p-3 bg-gray-900/60 rounded-xl border border-gray-800 flex items-center justify-between">
                             <div>
-                                <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Your Name</label>
-                                <input type="text" required placeholder="John Doe" class="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-teal-500 outline-none text-sm">
+                                <h4 class="text-xs font-bold text-white">Certified Business Analysis Professional</h4>
+                                <p class="text-[10px] text-gray-400">CHRD, UAE</p>
                             </div>
+                            <span class="text-[10px] font-mono text-brand-400">2023</span>
+                        </div>
+                        <div class="p-3 bg-gray-900/60 rounded-xl border border-gray-800 flex items-center justify-between">
                             <div>
-                                <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Your Email</label>
-                                <input type="email" required placeholder="john@company.com" class="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-teal-500 outline-none text-sm">
+                                <h4 class="text-xs font-bold text-white">Certified Specialist in Data Science & Analytics</h4>
+                                <p class="text-[10px] text-gray-400">ICTAK</p>
                             </div>
+                            <span class="text-[10px] font-mono text-brand-400">2023</span>
                         </div>
-
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Subject</label>
-                            <input type="text" required placeholder="Data Science Role / Collaboration" class="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-teal-500 outline-none text-sm">
+                        <div class="p-3 bg-gray-900/60 rounded-xl border border-gray-800 flex items-center justify-between">
+                            <div>
+                                <h4 class="text-xs font-bold text-white">Data Modelling with Power BI: Advanced DAX</h4>
+                                <p class="text-[10px] text-gray-400">Coursera</p>
+                            </div>
+                            <span class="text-[10px] font-mono text-brand-400">2026</span>
                         </div>
-
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Message</label>
-                            <textarea rows="4" required placeholder="Hello Muneera, I'd like to discuss an opportunity..." class="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-teal-500 outline-none text-sm"></textarea>
-                        </div>
-
-                        <button type="submit" class="w-full py-3.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-semibold transition-colors shadow-lg shadow-teal-600/20">
-                            Send Message
-                        </button>
-
-                        <p id="formFeedback" class="hidden text-center text-xs font-bold text-teal-600 mt-2">
-                            <i class="fa-solid fa-circle-check mr-1"></i> Thank you! Your message was logged successfully.
-                        </p>
-                    </form>
+                    </div>
                 </div>
 
             </div>
@@ -821,217 +535,17 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-8 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-xs text-slate-500 text-center">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p>© 2026 Muneera Mohamed. Data Science & Analytics Specialist.</p>
-            <div class="flex items-center gap-4">
-                <a href="#home" class="hover:text-teal-600">Back to Top</a>
+    <footer class="glass-panel border-t border-gray-800 py-12">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+                <span class="text-lg font-bold text-white block">Muneera Mohamed</span>
+                <span class="text-xs text-gray-400">Abu Dhabi, UAE • munee.mohamed@gmail.com • +971 56 606 12 55</span>
+            </div>
+            <div class="text-xs text-gray-500 font-mono">
+                © 2026 Muneera Mohamed. All rights reserved.
             </div>
         </div>
     </footer>
 
-    <!-- Project Details Dynamic Modal -->
-    <div id="projectModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm">
-        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-2xl w-full p-6 sm:p-8 max-h-[90vh] overflow-y-auto relative shadow-2xl">
-            <button onclick="closeModal()" class="absolute top-4 right-4 p-2 rounded-xl text-slate-400 hover:text-slate-600 dark:hover:text-white">
-                <i class="fa-solid fa-xmark text-xl"></i>
-            </button>
-            <div id="modalContent"></div>
-        </div>
-    </div>
-
-    <!-- Resume Dynamic Modal -->
-    <div id="resumeModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm">
-        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-xl w-full p-6 sm:p-8 relative shadow-2xl text-center space-y-4">
-            <button onclick="closeResumeModal()" class="absolute top-4 right-4 p-2 rounded-xl text-slate-400 hover:text-slate-600 dark:hover:text-white">
-                <i class="fa-solid fa-xmark text-xl"></i>
-            </button>
-            <div class="w-16 h-16 rounded-2xl bg-teal-100 dark:bg-teal-950 text-teal-600 dark:text-teal-400 flex items-center justify-center mx-auto text-2xl font-bold">
-                <i class="fa-solid fa-file-pdf"></i>
-            </div>
-            <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Muneera Mohamed - Resume</h3>
-            <p class="text-xs text-slate-600 dark:text-slate-300">
-                Data Science & Analytics Specialist | MSc Data Science | CMA USA | UAE Golden Visa
-            </p>
-            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800 text-left text-xs space-y-2 text-slate-600 dark:text-slate-300">
-                <p><strong>Email:</strong> munee.mohamed@gmail.com</p>
-                <p><strong>Phone:</strong> +971 56 606 12 55</p>
-                <p><strong>Location:</strong> Abu Dhabi, United Arab Emirates</p>
-                <p><strong>Key Skills:</strong> Deep Learning, Time Series, Python, SQL, Power BI DAX, DCF Financial Valuation.</p>
-            </div>
-            <div class="flex gap-3">
-                <button onclick="copyResumeLink()" class="flex-1 py-3 rounded-xl bg-slate-200 dark:bg-slate-800 font-semibold text-xs text-slate-800 dark:text-slate-200">
-                    <i class="fa-solid fa-copy mr-1"></i> Copy Contact Details
-                </button>
-                <button onclick="alert('Resume PDF view ready for download!')" class="flex-1 py-3 rounded-xl bg-teal-600 hover:bg-teal-700 font-semibold text-xs text-white">
-                    <i class="fa-solid fa-download mr-1"></i> Download PDF
-                </button>
-            </div>
-            <p id="copyAlert" class="hidden text-xs text-teal-600 font-bold">Details copied to clipboard!</p>
-        </div>
-    </div>
-
-    <!-- Interactive JavaScript Logic -->
-    <script>
-        // Project Detail Data Map
-        const modalData = {
-            project1: {
-                title: "Brain Tumor MRI Classification",
-                subtitle: "Deep Learning & Medical Imaging",
-                tags: ["Python", "TensorFlow", "CNN", "Grad-CAM", "Medical Vision"],
-                details: [
-                    "Developed custom Convolutional Neural Network (CNN) architectures achieving high classification accuracy (94-96%) on MRI scan diagnostic sets.",
-                    "Implemented Grad-CAM (Gradient-weighted Class Activation Mapping) for explainable AI, highlighting anatomical decision regions for radiologists.",
-                    "Applied data augmentation and normalization strategies, successfully reducing model overfitting by 41%.",
-                    "Cut manual medical review time by approximately 50%, accelerating early triage decisions."
-                ]
-            },
-            project2: {
-                title: "COVID-19 Severity Risk Prediction",
-                subtitle: "Healthcare Triage Analytics",
-                tags: ["Python", "GBM", "LazyClassifier", "Power BI", "Scikit-Learn"],
-                details: [
-                    "Engineered a Gradient Boosting Model (GBM) for predicting disease severity risk based on patient comorbidities, age, and clinical metrics.",
-                    "Achieved 0.86 ROC-AUC score, improving medical center triage accuracy by 32%.",
-                    "Utilized LazyClassifier to benchmark over 20 ML algorithms quickly, slashing initial model selection lead time by 65%.",
-                    "Built feature importance pipelines providing operational transparency to hospital leadership."
-                ]
-            },
-            project3: {
-                title: "Heart Disease Risk Prediction System",
-                subtitle: "Explainable AI Clinical Support",
-                tags: ["Python", "SHAP", "Precision-Recall", "Scikit-Learn"],
-                details: [
-                    "Tuned 3 ML classification models with 5-fold cross-validation, attaining 89.7% accuracy, 90.2% recall, and 0.939 ROC-AUC.",
-                    "Constructed leakage-safe data preprocessing pipelines to prevent training data contamination.",
-                    "Applied SHAP (SHapley Additive exPlanations) to detail patient-level risk factors and mitigate false-negative diagnostic risks."
-                ]
-            },
-            project4: {
-                title: "Retail Demand & Inventory Forecasting",
-                subtitle: "Time-Series Predictive Modeling",
-                tags: ["Python", "SQL", "ARIMA", "SARIMA", "Prophet", "Holt-Winters"],
-                details: [
-                    "Built multi-algorithm time-series models (ARIMA, SARIMA, FB Prophet, Holt-Winters) to forecast retail demand at SKU levels.",
-                    "Reduced forecast prediction errors by 25-35% and lowered lost sales instances by 40%.",
-                    "Delivered actionable inventory recommendations that cut excess stock by 18% and stockout occurrences by 30%.",
-                    "Automated data ingestion using Python & SQL pipelines, cutting manual forecasting workload by 70%."
-                ]
-            },
-            project5: {
-                title: "Smart Home Energy Forecasting & Anomaly Detection",
-                subtitle: "Computational IoT Research",
-                tags: ["Python", "SVM", "Random Forest", "KNN", "IoT Analytics"],
-                details: [
-                    "Integrated IoT sensor data stream pipelines for smart energy consumption monitoring.",
-                    "Engineered SVM, Random Forest, and KNN anomaly detection algorithms, boosting detection precision by 38%.",
-                    "Reduced structural energy waste by 12.6% and cut investigation time for abnormal power spikes by 50%."
-                ]
-            }
-        };
-
-        // Theme Toggle Logic
-        const themeToggleBtn = document.getElementById('themeToggle');
-        themeToggleBtn.addEventListener('click', () => {
-            document.documentElement.classList.toggle('dark');
-        });
-
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        document.querySelectorAll('.mobile-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-
-        // Project Filter Logic
-        function filterProjects(category) {
-            const cards = document.querySelectorAll('.project-card');
-            const btns = document.querySelectorAll('.filter-btn');
-
-            btns.forEach(btn => {
-                btn.classList.remove('bg-teal-600', 'text-white');
-                btn.classList.add('bg-white', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
-            });
-
-            event.target.classList.remove('bg-white', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
-            event.target.classList.add('bg-teal-600', 'text-white');
-
-            cards.forEach(card => {
-                if (category === 'all' || card.dataset.category === category) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-
-        // Modal Logic
-        function openModal(projectId) {
-            const data = modalData[projectId];
-            if (!data) return;
-
-            const content = document.getElementById('modalContent');
-            content.innerHTML = `
-                <div class="mb-4">
-                    <span class="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase tracking-widest">${data.subtitle}</span>
-                    <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white mt-1">${data.title}</h3>
-                </div>
-                <div class="flex flex-wrap gap-1.5 mb-6">
-                    ${data.tags.map(t => `<span class="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300">${t}</span>`).join('')}
-                </div>
-                <div class="space-y-3 mb-6">
-                    ${data.details.map(d => `
-                        <div class="flex items-start gap-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
-                            <i class="fa-solid fa-check text-teal-500 mt-1"></i>
-                            <span>${d}</span>
-                        </div>
-                    `).join('')}
-                </div>
-                <button onclick="closeModal()" class="w-full py-3 rounded-xl bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 font-bold text-xs text-slate-800 dark:text-slate-200">Close Case Study</button>
-            `;
-
-            document.getElementById('projectModal').classList.remove('hidden');
-        }
-
-        function closeModal() {
-            document.getElementById('projectModal').classList.add('hidden');
-        }
-
-        function openResumeModal() {
-            document.getElementById('resumeModal').classList.remove('hidden');
-        }
-
-        function closeResumeModal() {
-            document.getElementById('resumeModal').classList.add('hidden');
-        }
-
-        function copyResumeLink() {
-            const dummy = "Muneera Mohamed | Data Science Specialist | Email: munee.mohamed@gmail.com | Phone: +971566061255";
-            const el = document.createElement('textarea');
-            el.value = dummy;
-            document.body.appendChild(el);
-            el.select();
-            document.execCommand('copy');
-            document.body.removeChild(el);
-
-            const alertEl = document.getElementById('copyAlert');
-            alertEl.classList.remove('hidden');
-            setTimeout(() => alertEl.classList.add('hidden'), 3000);
-        }
-
-        function handleFormSubmit(e) {
-            e.preventDefault();
-            const feedback = document.getElementById('formFeedback');
-            feedback.classList.remove('hidden');
-            document.getElementById('contactForm').reset();
-            setTimeout(() => feedback.classList.add('hidden'), 4000);
-        }
-    </script>
 </body>
 </html>
